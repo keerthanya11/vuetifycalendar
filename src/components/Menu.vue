@@ -1,38 +1,27 @@
 <template>
-  <div class="text-center">
-    <v-menu offset-y>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="white"
-          text-color="black"
-          v-bind="attrs"
-          v-on="on"
-        >
-          Select Doctor
-          <v-icon>expand-more</v-icon>
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item
-          v-for="(item, index) in items"
-          :key="index"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-  </div>
+ <div>
+  <v-col lg="6" md="6">
+  <v-select class="menu"
+    :items="['keeru', 'appu', 'rama', 'mounika']"
+    label="Select Staff">
+    <template v-slot:item="{ item, attrs, on }">
+      <v-list-item
+        v-bind="attrs" v-on="on">
+        <v-list-item-title
+          :id="attrs['aria-labelledby']"
+          v-text=item>
+		</v-list-item-title>
+      </v-list-item>
+     </template>
+    </v-select>
+  </v-col>
+ </div>
 </template>
 
-<script>
-  export default {
-    data: () => ({
-      items: [
-        { title: 'keeru' },
-        { title: 'appu' },
-        { title: 'rama' },
-        { title: 'mounika' },
-      ],
-    }),
-  }
-</script>
+<style scoped>
+.menu{
+  margin-top: 50px;
+  padding-left: 1px;
+  text-align: center;
+}
+</style>
